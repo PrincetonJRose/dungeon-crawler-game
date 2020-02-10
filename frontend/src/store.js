@@ -1,9 +1,12 @@
 import { createStore, combineReducers } from 'redux'
-import userReducer from './reducers/userReducer'
+import playersReducer from './reducers/userReducer'
+import charactersReducer from './reducers/charactersReducer'
+import enemiesReducer from './reducers/enemiesReducer'
+import npcsReducer from './reducers/npcsReducer'
 
 const mainReducer = combineReducers({
     players: playersReducer,
-    characters: characterReducer,
+    characters: charactersReducer,
     enemies: enemiesReducer,
     npcs: npcsReducer,
 })
