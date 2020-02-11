@@ -1,5 +1,5 @@
 import { createStore, combineReducers } from 'redux'
-import playersReducer from './reducers/userReducer'
+import playersReducer from './reducers/playersReducer'
 import charactersReducer from './reducers/charactersReducer'
 import enemiesReducer from './reducers/enemiesReducer'
 import npcsReducer from './reducers/npcsReducer'
