@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
-import Player from './components/Player'
+import DrawPlayerCharacter from './components/characters/DrawPlayerCharacter'
+import World1 from './components/worlds/world1'
 
 class App extends Component {
-  constructor () {
-    super ()
-    this.state = {
-    
-    }
-  }
 
   componentDidMount () {
 
@@ -16,8 +11,8 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        {`Hi there!!!  <(^_^)>`}
-        <Player />
+        <World1 />
+        <DrawPlayerCharacter />
       </div>
     )
   }
