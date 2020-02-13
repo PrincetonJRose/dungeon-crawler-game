@@ -1,5 +1,5 @@
 import React from 'react';
-import World from './components/worlds/world'
+import World from './containers/worlds/world'
 
 const App = () => 
   <div className="App">

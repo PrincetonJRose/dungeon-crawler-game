@@ -1,7 +1,7 @@
 import React from 'react'
 import * as Maps from '../maps'
 import * as Vars from '../../config/constantVariables'
-import DrawPlayerCharacter from '../characters/DrawPlayerCharacter'
+import DrawPlayerCharacter from '../../components/characters/DrawPlayerCharacter'
 
 const World = props =>
     <div
