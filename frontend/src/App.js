@@ -1,21 +1,9 @@
-import React, { Component } from 'react';
-import DrawPlayerCharacter from './components/characters/DrawPlayerCharacter'
-import World1 from './components/worlds/world1'
+import React from 'react';
+import World from './components/worlds/world'
 
-class App extends Component {
-
-  componentDidMount () {
-
-  }
-
-  render () {
-    return (
-      <div className="App">
-        <World1 />
-        <DrawPlayerCharacter />
-      </div>
-    )
-  }
-}
+const App = () => 
+  <div className="App">
+    <World />
+  </div>
 
 export default App;
