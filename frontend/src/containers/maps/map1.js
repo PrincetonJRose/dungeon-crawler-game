@@ -1,4 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
 import * as Vars from '../../config/constantVariables'
 
 const Map1 = props =>
@@ -10,6 +11,20 @@ const Map1 = props =>
             backgroundColor: 'green',
             border: '4px solid white',
         }}
-    />
+    >
+        {
+            props.tiles.map1 ? 
+                console.log('there is a map now yay!')
+            :
+                () => props.dispatch({ type: 'GENERATE_MAP_TILESET', details: { name: 'map1', height: Vars.maxHeight, width: Vars.maxWidth } })
+        }
+    </div>
 
-export default Map1
+let mapStateToProps = state => {
+    return {
+        envObjects: state.environment.environmentObjects,
+        tiles: state.environment.tiles
+    }
+}
+
+export default connect(mapStateToProps)(Map1)
