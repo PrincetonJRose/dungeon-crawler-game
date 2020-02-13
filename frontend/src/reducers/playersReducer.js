@@ -2,18 +2,21 @@ export default (state = { currentPlayer: {}, jwtToken: null , errors: [] }, acti
     switch (action.type) {
         case "SET_PLAYER": {
             return {
-                ...state, currentPlayer: action.player
+                ...state,
+                currentPlayer: action.player
             }
         }
         case "CLEAR_PLAYER": {
             return {
-                ...state, currentPlayer: null
+                ...state,
+                currentPlayer: null
             }
         }
         case "SET_TOKEN": {
             if (localStorage.getItem("jwtToken")) {
                 return {
-                    ...state, jwtToken: localStorage.getItem("jwtToken")
+                    ...state,
+                    jwtToken: localStorage.getItem("jwtToken")
                 }
             } else {
                 return state
@@ -21,12 +24,14 @@ export default (state = { currentPlayer: {}, jwtToken: null , errors: [] }, acti
         }
         case "DELETE_TOKEN": {
             return {
-                ...state, jwtToken: null
+                ...state,
+                jwtToken: null
             }
         }
         case "SET_ERRORS": {
             return {
-                ...state, errors: action.errors
+                ...state,
+                errors: action.errors
             }
         }
         default: return state

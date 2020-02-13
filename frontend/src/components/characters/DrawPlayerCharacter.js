@@ -1,10 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import PlayerMovement from './PlayerMovement'
 
 const DrawPlayerCharacter = props =>
     <div
         style = {{
-            position: 'relative',
+            position: 'absolute',
             top: props.position.y,
             left: props.position.x,
             backgroundImage: `url(../player_walk.png)`,
@@ -20,4 +21,4 @@ let mapStateToProps =(state)=> {
     }
 }
 
-export default connect(mapStateToProps)(DrawPlayerCharacter)
+export default connect(mapStateToProps)(PlayerMovement(DrawPlayerCharacter))
