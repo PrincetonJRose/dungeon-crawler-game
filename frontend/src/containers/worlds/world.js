@@ -3,12 +3,12 @@ import * as Maps from '../maps'
 import * as Vars from '../../config/constantVariables'
 import DrawPlayerCharacter from '../../components/characters/DrawPlayerCharacter'
 
-const World = props =>
+const World = () =>
     <div
         style={{
             position: 'relative',
-            height: Vars.maxHeight,
-            width: Vars.maxWidth,
+            height: Vars.maxWorldHeight,
+            width: Vars.maxWorldWidth,
             margin: '50px auto',
         }}
     >

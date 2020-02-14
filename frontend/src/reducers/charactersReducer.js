@@ -2,7 +2,8 @@ import * as Vars from '../config/constantVariables'
 
 export default (state = { currentParty: [], playerCharacter: { position: { x: 0, y: 0 }, }, }, action) => {
     switch (action.type) {
-        case "MOVE_PLAYER": {
+
+        case "MOVE_PLAYER":
             let x_axis = state.playerCharacter.position.x
             let y_axis = state.playerCharacter.position.y
             let key = action.direction
@@ -11,9 +12,9 @@ export default (state = { currentParty: [], playerCharacter: { position: { x: 0,
                 x_axis -= distance
             else if ( key === 38 && y_axis > 0 )
                 y_axis -= distance
-            else if ( key === 39 && x_axis < Vars.maxWidth - distance )
+            else if ( key === 39 && x_axis < Vars.maxMapWidth - distance )
                 x_axis += distance
-            else if ( key === 40 && y_axis < Vars.maxHeight - distance )
+            else if ( key === 40 && y_axis < Vars.maxMapHeight - distance )
                 y_axis += distance
             return {
                 ...state,
@@ -24,7 +25,7 @@ export default (state = { currentParty: [], playerCharacter: { position: { x: 0,
                     }
                 }
             }
-        }
+
         default: return state
     }
 }
