@@ -7,7 +7,7 @@ const environmentalObject = props =>
             position: 'absolute',
             top: props.position.y,
             left: props.position.x,
-            backgroundImage: `url(../tree_sprites.png)`,
+            backgroundImage: `url(../${props.imgUrl})`,
             backgroundPosition: `0 0`,
             width: props.size.width,
             height: props.size.height,

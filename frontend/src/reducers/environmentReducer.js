@@ -13,18 +13,20 @@ export default (state = { environmentObjects: [], tiles: {}, newObject: {} }, ac
                 layout: [],
             }
             let tile = tiles[tileName]
-            for ( let row = 0; row < ( tile.width / objectSize ); row++ )
-                for ( let column = 0; column < ( tile.height / objectSize ); column++ ) {
+            for ( let row = 0; row < ( tile.height / objectSize ); row++ ) {
+                tile.layout.push([])
+                for ( let column = 0; column < ( tile.width / objectSize ); column++ ) {
                     if ( row === 0 && column === 0 ) {
-                        tile.layout.push( null )
+                        tile.layout[row].push( null )
                         continue
                     }
-                    let randomNumber = Math.round(Math.random())
-                    if ( randomNumber = 0 )
-                        tile.layout.push( null )
+                    const randomNumber = Math.round(Math.random()*1)
+                    if ( randomNumber === 0 )
+                        tile.layout[row].push( null )
                     else
-                        tile.layout.push( 'T' )
+                        tile.layout[row].push( 'T' )
                 }
+            }
             console.log( tiles )
             return {
                 ...state,
@@ -33,6 +35,8 @@ export default (state = { environmentObjects: [], tiles: {}, newObject: {} }, ac
 
         case "GENERATE_OBJECT":
             let treeStump = {
+                name: 'tree stump',
+                imgUrl: 'tree_sprites.png',
                 position: {
                     x: 0,
                     y: 0,

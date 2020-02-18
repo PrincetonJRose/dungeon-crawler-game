@@ -5,6 +5,8 @@ import * as Vars from '../../config/constantVariables'
 const Map1 = props => {
 
     function renderTile (props) {
+        // checks to see if a tileset of objects exists for this map
+        // if it does not exist, then create one
         if ( props.tiles.map1 )
             return null
         else
@@ -17,11 +19,12 @@ const Map1 = props => {
                 position: 'relative',
                 width: Vars.maxMapWidth,
                 height: Vars.maxMapHeight,
-                backgroundColor: 'green',
+                backgroundColor: 'brown',
                 border: '4px solid blue',
             }}
         >
             {
+                // call the renderTile function to draw environmental objects on the map
                 renderTile( props )
             }
         </div>
