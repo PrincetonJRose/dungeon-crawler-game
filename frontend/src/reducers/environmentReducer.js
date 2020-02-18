@@ -14,18 +14,23 @@ export default (state = { environmentObjects: [], tiles: {}, newObject: {} }, ac
             }
             let tile = tiles[tileName]
             for ( let row = 0; row < ( tile.height / objectSize ); row++ ) {
-                tile.layout.push([])
+                let array = []
                 for ( let column = 0; column < ( tile.width / objectSize ); column++ ) {
                     if ( row === 0 && column === 0 ) {
-                        tile.layout[row].push( null )
+                        array.push( null )
                         continue
                     }
-                    const randomNumber = Math.round(Math.random()*1)
-                    if ( randomNumber === 0 )
-                        tile.layout[row].push( null )
+                    const randomNumber = Math.round(Math.random()*10)
+                    if ( randomNumber < 4 )
+                        array.push( null )
+                    else if ( randomNumber < 6 )
+                        array.push( 'T' )
+                    else if ( randomNumber < 8 )
+                        array.push( 'S' )
                     else
-                        tile.layout[row].push( 'T' )
+                        array.push( 'G' )
                 }
+                tiles[tileName].layout.push(array)
             }
             console.log( tiles )
             return {
@@ -33,24 +38,26 @@ export default (state = { environmentObjects: [], tiles: {}, newObject: {} }, ac
                 tiles: { ...tiles },
             }
 
-        case "GENERATE_OBJECT":
-            let treeStump = {
-                name: 'tree stump',
-                imgUrl: 'tree_sprites.png',
-                position: {
-                    x: 0,
-                    y: 0,
-                },
-                size: {
-                    width: 40,
-                    height: 30,
-                }
-            }
-            let objectsArray = [...state.environmentObjects, treeStump]
-            return {
-                ...state,
-                environmentObjects: objectsArray
-            }
+        // case "GENERATE_OBJECT":
+        //     console.log(action.properties)
+        //     let newObj = action.properties
+        //     let envObject = {
+        //         name: newObj.name,
+        //         imgUrl: newObj.image,
+        //         position: {
+        //             x: 0,
+        //             y: 0,
+        //         },
+        //         size: {
+        //             width: newObj.width,
+        //             height: newObj.height,
+        //         }
+        //     }
+        //     let objectsArray = [...state.environmentObjects, envObject]
+        //     return {
+        //         ...state,
+        //         environmentObjects: objectsArray
+        //     }
 
         case 'CLEAR_OBJECTS_LIST':
             return {

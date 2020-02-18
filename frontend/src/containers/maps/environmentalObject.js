@@ -1,23 +1,29 @@
 import React from 'react'
-import { connect } from 'react-redux'
 
-const environmentalObject = props =>
-    <div
-        style = {{
-            position: 'absolute',
-            top: props.position.y,
-            left: props.position.x,
-            backgroundImage: `url(../${props.imgUrl})`,
-            backgroundPosition: `0 0`,
-            width: props.size.width,
-            height: props.size.height,
-        }}
-    >
-        
-    </div>
+const EnvironmentalObject = props => {
 
-const mapStateToProps = state => {
-    
+    let envObject
+
+    if ( props.envObject )
+        envObject = props.envObject
+
+    if ( envObject )
+        return <div
+                name={envObject.name}
+                style = {{
+                    position: 'absolute',
+                    top: props.position.y,
+                    left: props.position.x,
+                    background: `url(../${envObject.imgUrl}) no-repeat ${envObject.bg_x}px ${envObject.bg_y}px`,
+                    width: `${envObject.width}px`,
+                    height: `${envObject.height}px`,
+                }}
+            >
+                
+            </div>
+    else
+        return null
 }
 
-export default connect(mapStateToProps)(environmentalObject)
+
+export default EnvironmentalObject
