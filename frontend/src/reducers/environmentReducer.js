@@ -46,11 +46,11 @@ export default (state = { environmentObjects: [], tiles: {}, newObject: {} }, ac
                 let array = []
                 row.forEach( section => {
                     if ( section === 'G' )
-                        array.push( <EnvironmentalObject envObject={Tree.grass} position={{...position}} /> )
+                        array.push( { envObject: Tree.grass, position: {...position} } )
                     else if ( section === 'T' )
-                        array.push( <EnvironmentalObject envObject={Tree.tree} position={{...position}} /> )
+                        array.push( { envObject: Tree.tree, position: {...position} } )
                     else if ( section === 'S' )
-                        array.push( <EnvironmentalObject envObject={Tree.treeStump} position={{...position}} /> )
+                        array.push( { envObject: Tree.treeStump, position: {...position} } )
                     else
                         array.push( null )
                     position.x += 40
