@@ -61,7 +61,7 @@ export default (state = { environmentObjects: [], tiles: {}, newObject: {} }, ac
             })
             renderEnv = renderEnv.flat()
             tile.renderEnv = renderEnv
-            console.log( tiles )
+            
             return {
                 ...state,
                 tiles: { ...tiles },

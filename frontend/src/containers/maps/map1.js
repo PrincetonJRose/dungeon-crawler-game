@@ -14,7 +14,8 @@ const Map1 = props => {
         else
             props.dispatch({ type: 'GENERATE_MAP_TILESET', details: { map1: { height: Vars.maxMapHeight, width: Vars.maxMapWidth }, name: 'map1', objectSize: Vars.objectSpriteSize } })
 
-    return <div
+    return (
+        <div
             style={{
                 position: 'relative',
                 width: Vars.maxMapWidth,
@@ -27,7 +28,6 @@ const Map1 = props => {
                 // call the renderTile function to draw environmental objects on the map
                 renderEnv ?
                     renderEnv.map( env => {
-                        console.log( env )
                         if ( env )
                             return <EnvironmentalObject envObject={env.envObject} position={env.position} />
                         else
@@ -37,6 +37,7 @@ const Map1 = props => {
                     null
             }
         </div>
+    )
 }
 
 const mapStateToProps = state => {
