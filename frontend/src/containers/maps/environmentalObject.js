@@ -6,7 +6,7 @@ const EnvironmentalObject = props => {
 
     if ( props.envObject )
         envObject = props.envObject
-
+    
     if ( envObject )
         return <div
                 name={envObject.name}

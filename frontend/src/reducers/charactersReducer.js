@@ -1,28 +1,40 @@
 import * as Vars from '../config/constantVariables'
 
-export default (state = { currentParty: [], playerCharacter: { position: { x: 0, y: 0 }, }, }, action) => {
+export default (state = { currentParty: [], playerCharacter: { position: { x: 0, y: 0 }, layoutPosition: { x: 0, y: 0 } }, }, action) => {
     switch (action.type) {
 
         case "MOVE_PLAYER":
             let x_axis = state.playerCharacter.position.x
             let y_axis = state.playerCharacter.position.y
-            let key = action.direction
+            let x_position = state.playerCharacter.layoutPosition.x
+            let y_position = state.playerCharacter.layoutPosition.y
+            let key = action.location.keyCode
+            let layout = action.location.layout
             let distance = Vars.playerSpriteSize
-            if ( key === 37 && x_axis > 0 )
+            if ( key === 37 && x_axis > 0 && (layout[y_position][x_position - 1] === null || layout[y_position][x_position - 1] === 'G') ) {
                 x_axis -= distance
-            else if ( key === 38 && y_axis > 0 )
+                x_position -= 1
+            } else if ( key === 38 && y_axis > 0 && (layout[y_position - 1][x_position] === null || layout[y_position - 1][x_position] === 'G') ) {
                 y_axis -= distance
-            else if ( key === 39 && x_axis < Vars.maxMapWidth - distance )
+                y_position -= 1
+            } else if ( key === 39 && x_axis < Vars.maxMapWidth - distance  && (layout[y_position][x_position + 1] === null || layout[y_position][x_position + 1] === 'G') ) {
                 x_axis += distance
-            else if ( key === 40 && y_axis < Vars.maxMapHeight - distance )
+                x_position += 1
+            } else if ( key === 40 && y_axis < Vars.maxMapHeight - distance && (layout[y_position + 1][x_position] === null || layout[y_position + 1][x_position] === 'G') ) {
                 y_axis += distance
+                y_position += 1
+            }
             return {
                 ...state,
                 playerCharacter: {
                     position: {
                         x: x_axis,
                         y: y_axis,
-                    }
+                    },
+                    layoutPosition: {
+                        x: x_position,
+                        y: y_position
+                    },
                 }
             }
 

@@ -1,3 +1,5 @@
+import * as Tree from '../containers/maps/treeSpritePositions'
+
 export default (state = { environmentObjects: [], tiles: {}, newObject: {} }, action) => {
     switch (action.type) {
 
@@ -11,6 +13,7 @@ export default (state = { environmentObjects: [], tiles: {}, newObject: {} }, ac
                 height: mapHeight,
                 width: mapWidth,
                 layout: [],
+                renderEnv: [],
             }
             let tile = tiles[tileName]
             for ( let row = 0; row < ( tile.height / objectSize ); row++ ) {
@@ -32,7 +35,33 @@ export default (state = { environmentObjects: [], tiles: {}, newObject: {} }, ac
                 }
                 tiles[tileName].layout.push(array)
             }
-            console.log( tiles )
+
+            let layout = [...tile.layout]
+            let renderEnv = []
+            let position = {
+                x: 0,
+                y: 0,
+            }
+            layout.forEach( row => {
+                let array = []
+                row.forEach( section => {
+                    if ( section === 'G' )
+                        array.push( { envObject: Tree.grass, position: {...position} } )
+                    else if ( section === 'T' )
+                        array.push( { envObject: Tree.tree, position: {...position} } )
+                    else if ( section === 'S' )
+                        array.push( { envObject: Tree.treeStump, position: {...position} } )
+                    else
+                        array.push( null )
+                    position.x += 40
+                })
+                renderEnv.push( array )
+                position.x = 0
+                position.y += 40
+            })
+            renderEnv = renderEnv.flat()
+            tile.renderEnv = renderEnv
+            
             return {
                 ...state,
                 tiles: { ...tiles },
