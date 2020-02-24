@@ -4,9 +4,9 @@ const PlayerMovement = DrawPlayerCharacter => {
     
     function moveCharacter(e) {
         e.preventDefault()
-        console.log(store.getState())
+        let layout = store.getState().environment.tiles.map1.layout
         if ( e.keyCode > 36 && e.keyCode < 41 )
-            store.dispatch({ type: 'MOVE_PLAYER', direction: e.keyCode })
+            store.dispatch({ type: 'MOVE_PLAYER', location: { keyCode: e.keyCode, layout: layout } })
     }
     
     window.addEventListener('keydown', (e) => moveCharacter(e))
