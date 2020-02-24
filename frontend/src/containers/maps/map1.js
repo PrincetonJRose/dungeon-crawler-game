@@ -10,7 +10,7 @@ const Map1 = props => {
         // checks to see if a tileset of objects exists for this map
         // if it does not exist, then create one
         if ( props.tiles.map1 )
-            renderEnv = props.tiles.map1.renderEnv.slice()
+            renderEnv = [...props.tiles.map1.renderEnv]
         else
             props.dispatch({ type: 'GENERATE_MAP_TILESET', details: { map1: { height: Vars.maxMapHeight, width: Vars.maxMapWidth }, name: 'map1', objectSize: Vars.objectSpriteSize } })
 
