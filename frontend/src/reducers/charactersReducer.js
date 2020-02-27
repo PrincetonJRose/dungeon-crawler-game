@@ -14,22 +14,30 @@ export default (state = { currentParty: [], playerCharacter: { position: { x: 0,
             let layout = action.location.layout
             let distance = Vars.playerSpriteSize
             
-            if ( key === 37 && x_axis > 0 && ( layout[y_position][x_position - 1] === null || layout[y_position][x_position - 1] === 'G' ) ) {
-                x_axis -= distance
-                x_position -= 1
+            if ( key === 37 ) {
                 spriteSheetY = -81
-            } else if ( key === 38 && y_axis > 0 && ( layout[y_position - 1][x_position] === null || layout[y_position - 1][x_position] === 'G' ) ) {
-                y_axis -= distance
-                y_position -= 1
+                if (x_axis > 0 && ( layout[y_position][x_position - 1] === null || layout[y_position][x_position - 1] === 'G' ) ) {
+                    x_axis -= distance
+                    x_position -= 1
+                }
+            } else if ( key === 38 ) {
                 spriteSheetY = -41
-            } else if ( key === 39 && x_axis < Vars.maxMapWidth - distance  && ( layout[y_position][x_position + 1] === null || layout[y_position][x_position + 1] === 'G' ) ) {
-                x_axis += distance
-                x_position += 1
+                if (y_axis > 0 && ( layout[y_position - 1][x_position] === null || layout[y_position - 1][x_position] === 'G' ) ) {
+                    y_axis -= distance
+                    y_position -= 1
+                }
+            } else if ( key === 39 ) {
                 spriteSheetY = -121
-            } else if ( key === 40 && y_axis < Vars.maxMapHeight - distance && ( layout[y_position + 1][x_position] === null || layout[y_position + 1][x_position] === 'G' ) ) {
-                y_axis += distance
-                y_position += 1
+                if (x_axis < Vars.maxMapWidth - distance  && ( layout[y_position][x_position + 1] === null || layout[y_position][x_position + 1] === 'G' ) ) {
+                    x_axis += distance
+                    x_position += 1
+                }
+            } else if ( key === 40 ) {
                 spriteSheetY = -1
+                if ( key === 40 && y_axis < Vars.maxMapHeight - distance && ( layout[y_position + 1][x_position] === null || layout[y_position + 1][x_position] === 'G' ) ) {
+                    y_axis += distance
+                    y_position += 1
+                }
             }
             
             spriteSheetX -= 40
