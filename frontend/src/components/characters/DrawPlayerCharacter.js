@@ -8,10 +8,9 @@ const DrawPlayerCharacter = props =>
             position: 'absolute',
             top: props.position.y,
             left: props.position.x,
-            backgroundImage: `url(../player_walk.png)`,
-            backgroundPosition: `0 0`,
-            width: `40px`,
-            height: `40px`,
+            background: `url(../player_walk.png) no-repeat ${props.spriteSheetX}px ${props.spriteSheetY}px`,
+            width: `${props.spriteWidth}px`,
+            height: `${props.spriteHeight}px`,
         }}
     />
 
